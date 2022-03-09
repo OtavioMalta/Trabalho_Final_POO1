@@ -6,14 +6,12 @@ public class Emprestimo {
     protected long id;
     protected double valor;
     protected int parcela;
+    protected static GeradorId gId = new GeradorId();
 
-
-
-
-    public Emprestimo(Agencia agencia, ArrayList<Cliente> clientes, long id, double valor, int parcela) {
+    public Emprestimo(Agencia agencia, ArrayList<Cliente> clientes, double valor, int parcela) {
         this.agencia = agencia;
         this.clientes = clientes;
-        this.id = id;
+        this.id = gId.gerarIdEmprestimo();
         this.valor = valor;
         this.parcela = parcela;
     }

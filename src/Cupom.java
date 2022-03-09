@@ -3,9 +3,10 @@ import java.util.Date;
 public class Cupom {
     protected long numero;
     protected Date validade;
+    protected static GeradorId gId = new GeradorId();
 
-    public Cupom(long numero, Date validade) {
-        this.numero = numero;
+    public Cupom( Date validade) {
+        this.numero = gId.gerarIdCupom();
         this.validade = validade;
     }
     public long getNumero() {

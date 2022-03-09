@@ -1,11 +1,11 @@
 public class GeradorId {
-    private static long IDCliente = 0;
-    private static long IDConta = 0;
-    private static long IDEmprestimo = 0;
-    private static long IDFuncionario = 0;
-    private static long IDOperacao = 0;
-
-    private static long IDAgencia = 0;
+    private static long IDCliente = 1;
+    private static long IDConta = 1;
+    private static long IDEmprestimo = 1;
+    private static long IDFuncionario = 1;
+    private static long IDOperacao = 1;
+    private static long IDCupom = 1;
+    private static long IDAgencia = 1;
 
     public GeradorId() {
     }
@@ -32,6 +32,10 @@ public class GeradorId {
 
     public long gerarIdAgencia(){
         return IDAgencia++;
+    }
+
+    public long gerarIdCupom(){
+        return IDCupom++;
     }
     
 }

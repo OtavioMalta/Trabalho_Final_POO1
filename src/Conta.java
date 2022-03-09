@@ -8,16 +8,19 @@ public abstract class Conta {
     protected double saldo;
     protected Date acesso;
     protected long id;
+    protected static GeradorId gId = new GeradorId();
+
+    
     public Conta() {
     }
 
-    public Conta( long idAgencia, double saldo, long id) {
+    public Conta( long idAgencia, double saldo) {
         
         this.idAgencia = idAgencia;
         this.criacao = new Date();
         this.saldo = saldo;
         this.acesso = new Date();
-        this.id = id;
+        this.id = gId.gerarIdConta();
         this.clientes = new ArrayList<>();
     }
 
@@ -74,20 +77,11 @@ public abstract class Conta {
         acesso = new Date();
         for(Cliente c : clientes){
             this.clientes.add(c);
-            c.adicionarConta(this);
         }
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-            ", idAgencia='" + getIdAgencia() + "'" +
-            ", criacao='" + getCriacao() + "'" +
-            ", saldo='" + getSaldo() + "'" +
-            ", acesso='" + getAcesso() + "'" +
-            ", id='" + getId() + "'" +
-            "}";
-    }
+    
+    public abstract void imprimirConta();
 
 
 

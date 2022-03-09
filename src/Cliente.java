@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Cliente {
+public class Cliente extends Pessoa{
     protected long id;
     protected String nome;
     protected String cpf;
@@ -12,10 +12,11 @@ public class Cliente {
     protected ArrayList<Emprestimo> emprestimos;
     //protected Gerente gerente;
     protected ArrayList<Conta> contas;
+    protected static GeradorId gId = new GeradorId();
 
-    public Cliente(long id, String nome, String cpf, Date nascimento, String endereco, String cidade, String estado) {
-        this.id = id;
-        this.nome = nome;
+    public Cliente(String nome, String cpf, Date nascimento, String endereco, String cidade, String estado) {
+        super(nome);
+        this.id = gId.gerarIdCliente();
         this.cpf = cpf;
         this.nascimento = nascimento;
         this.endereco = endereco;
@@ -34,13 +35,6 @@ public class Cliente {
         this.id = id;
     }
 
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public String getCpf() {
         return this.cpf;
@@ -102,6 +96,12 @@ public class Cliente {
         return this.contas;
     }
 
+    public void imprimirContas(){
+        for(Conta c: contas){
+            c.imprimirConta();
+        }
+    }
+
     public void setContas(ArrayList<Conta> contas) {
         this.contas = contas;
     }
@@ -109,6 +109,7 @@ public class Cliente {
 
     public void adicionarConta(Conta conta){
         contas.add(conta);
+        conta.atribuirCliente(this);
     }
 
     public void adicionarContas(ArrayList<Conta> contas){
@@ -118,20 +119,19 @@ public class Cliente {
         }
     }
 
-
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", nome='" + getNome() + "'" +
-            ", cpf='" + getCpf() + "'" +
-            ", nascimento='" + getNascimento() + "'" +
-            ", endereco='" + getEndereco() + "'" +
-            ", cidade='" + getCidade() + "'" +
-            ", estado='" + getEstado() + "'" +
-            ", emprestimos='" + getEmprestimos() + "'" +
-            ", contas='" + getContas() + "'" +
-            "}";
+    public void imprimirCliente() {
+        System.out.println("id='" + getId() + "'\n" +
+            "nome='" + getNome() + "'\n" +
+            "cpf='" + getCpf() + "'\n" +
+            "nascimento='" + getNascimento() + "'\n" +
+            "endereco='" + getEndereco() + "'\n" +
+            "cidade='" + getCidade() + "'\n" +
+            "estado='" + getEstado() + "'\n" +
+            "emprestimos='" + getEmprestimos() + "'\n" +
+            "contas='" 
+        );
+        imprimirContas();
+            
     }
 
 

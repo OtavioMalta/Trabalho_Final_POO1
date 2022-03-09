@@ -7,14 +7,19 @@ public class Operacao {
     protected Date data;
     protected long id;
 
+    protected ContaCorrente conta;
 
-    public Operacao(Tipo tipo, String descricao, double valor, Date data, long id) {
+    protected static GeradorId gId = new GeradorId();
+
+
+    public Operacao(Tipo tipo, String descricao, double valor, Date data, ContaCorrente conta) {
         this.tipo = tipo;
         this.descricao = descricao;
         this.valor = valor;
         this.data = data;
-        this.id = id;
-    }
+        this.id = gId.gerarIdOperacao();
+        this.conta = conta;
+     }
 
     public Tipo getTipo() {
         return this.tipo;
@@ -55,5 +60,12 @@ public class Operacao {
     public void setId(long id) {
         this.id = id;
     }
-    
+
+    public void imprimirOperacao(){
+        System.out.print("tipo= '"+ getTipo()+"'"+
+        "descricao= '" + getDescricao()+"'"+
+        "valor= '" + getValor()+"'"+
+        "data= '" + getData()+"'"+
+        "numero= '" + getId()+"'");
+    }
 }

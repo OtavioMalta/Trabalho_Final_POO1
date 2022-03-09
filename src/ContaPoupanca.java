@@ -1,11 +1,10 @@
-import java.util.ArrayList;
 import java.util.Date;
 
 public class ContaPoupanca extends Conta{
     private double juros;
 
-    public ContaPoupanca( long idAgencia, double saldo, Date acesso, double juros, long id) {
-        super(idAgencia, saldo, id);
+    public ContaPoupanca( long idAgencia, double saldo, double juros) {
+        super(idAgencia, saldo);
         this.juros = juros;
     }
 
@@ -19,7 +18,24 @@ public class ContaPoupanca extends Conta{
         super.acesso = new Date();
         this.juros = juros;
     }
+
+    @Override
+    public void imprimirConta() {
+        System.out.println("ID ='" + getId() + "'\n" +
+        "idAgencia='" + getIdAgencia() + "'\n" +
+        "criacao='" + getCriacao() + "'\n" +
+        "saldo='" + getSaldo() + "'\n" +
+        "acesso='" + getAcesso() + "'\n" +
+        "juros='" + getJuros() + "'\n" +
+        "idClientes=" );
+        imprimirClientes();
+    }
   
+    public void imprimirClientes(){
+        for(Cliente c: clientes){
+            System.out.println(c.getId());
+        }
+    }
 
     
 }

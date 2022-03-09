@@ -1,27 +1,37 @@
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Locale;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        GeradorId gId = new GeradorId();
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
-        Cliente c1 = new Cliente( gId.gerarIdCliente(), "Otavio", "cpf", f.parse("31/08/2001"), "rua 2", "franca","sp");
-        Cliente c2 = new Cliente(gId.gerarIdCliente(), "Otavio", "cpf", f.parse("31/08/2002"), "rua 2", "f","sp");
 
+
+        Cliente cliente1 = new Cliente( "Teste1", "123", f.parse("31/08/2001"), "rua 1", "franca","sp");
+        Cliente cliente2 = new Cliente("Teste2", "456", f.parse("12/02/2002"), "rua 2", "Uberlandia","mg");
         ArrayList<Cliente> clientes= new ArrayList<>();
-        clientes.add(c1);
-        clientes.add(c2);
+        clientes.add(cliente1);
+        clientes.add(cliente2);
 
-        ContaCorrente c = new ContaCorrente(1, 5202.21, 2.3, gId.gerarIdConta());
-        c.atribuirCliente(clientes);
-        System.out.println(c1.toString());
+        Agencia agencia1 = new Agencia("Uberaba", "mg", "AgenciaPrincipal");
+        agencia1.imprimirAgencia();
+        Agencia agencia2 = new Agencia("Restinga", "sp", "AgenciaSecundaria");
+        agencia2.imprimirAgencia();
+
+        ContaCorrente cc = new ContaCorrente(agencia2.getId(), 5202.21, 2.3);
+        cliente1.adicionarConta(cc);
+        cc.realizarOperacao(Tipo.DEBITO, "Luz", 6000, new Date());
         
-        System.out.println("\n\n------------");
-        System.out.println(c2.toString());
+        ContaPoupanca cp = new ContaPoupanca(agencia1.getId(), 4500, 3);
+        cliente2.adicionarConta(cp);
 
-        System.out.println("\n\n------------");
-        System.out.println(c);
+        cp.imprimirConta();
+
+
+        System.out.println("\n\n");
+        cliente2.imprimirCliente();
+        
+        
+      
     }
 }
