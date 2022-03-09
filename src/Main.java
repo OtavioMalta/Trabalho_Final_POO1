@@ -1,6 +1,13 @@
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import DTO.Agencia;
+import DTO.Cliente;
+import DTO.ContaCorrente;
+import DTO.ContaPoupanca;
+import Util.Tipo;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -27,7 +34,7 @@ public class Main {
 
         cp.imprimirConta();
 
-
+        agencia1.realizarEmprestimo(clientes, 9500, 2);
         System.out.println("\n\n");
         cliente2.imprimirCliente();
         
