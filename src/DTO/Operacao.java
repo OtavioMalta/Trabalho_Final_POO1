@@ -1,7 +1,6 @@
 package DTO;
 import java.util.Date;
 
-import Util.GeradorId;
 import Util.Tipo;
 
 public class Operacao {
@@ -13,7 +12,7 @@ public class Operacao {
 
     protected ContaCorrente conta;
 
-    protected static GeradorId gId = new GeradorId();
+    private static long IDOperacao = 1;
 
 
     public Operacao(Tipo tipo, String descricao, double valor, Date data, ContaCorrente conta) {
@@ -21,7 +20,7 @@ public class Operacao {
         this.descricao = descricao;
         this.valor = valor;
         this.data = data;
-        this.id = gId.gerarIdOperacao();
+        this.id = Operacao.IDOperacao++;
         this.conta = conta;
      }
 

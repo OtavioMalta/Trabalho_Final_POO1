@@ -1,15 +1,15 @@
 package DTO;
 import java.util.Date;
 
-import Util.GeradorId;
 
 public class Cupom {
     protected long numero;
     protected Date validade;
-    protected static GeradorId gId = new GeradorId();
+    
+    private static long IDCupom = 1;
 
     public Cupom( Date validade) {
-        this.numero = gId.gerarIdCupom();
+        this.numero = Cupom.IDCupom++;
         this.validade = validade;
     }
     public long getNumero() {

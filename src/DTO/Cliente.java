@@ -2,8 +2,6 @@ package DTO;
 import java.util.ArrayList;
 import java.util.Date;
 
-import Util.GeradorId;
-
 public class Cliente extends Pessoa{
     protected long id;
     protected String nome;
@@ -15,11 +13,11 @@ public class Cliente extends Pessoa{
     protected ArrayList<Emprestimo> emprestimos;
     //protected Gerente gerente;
     protected ArrayList<Conta> contas;
-    protected static GeradorId gId = new GeradorId();
+    private static long IDCliente = 1;
 
     public Cliente(String nome, String cpf, Date nascimento, String endereco, String cidade, String estado) {
         super(nome);
-        this.id = gId.gerarIdCliente();
+        this.id = Cliente.IDCliente++;
         this.cpf = cpf;
         this.nascimento = nascimento;
         this.endereco = endereco;

@@ -1,7 +1,6 @@
 package DTO;
 import java.util.ArrayList;
 
-import Util.GeradorId;
 
 public class Emprestimo {
     protected Agencia agencia;
@@ -9,12 +8,12 @@ public class Emprestimo {
     protected long id;
     protected double valor;
     protected int parcela;
-    protected static GeradorId gId = new GeradorId();
+    private static long IDEmprestimo = 1;
 
     public Emprestimo(Agencia agencia, ArrayList<Cliente> clientes, double valor, int parcela) {
         this.agencia = agencia;
         this.clientes = clientes;
-        this.id = gId.gerarIdEmprestimo();
+        this.id = Emprestimo.IDEmprestimo++;
         this.valor = valor;
         this.parcela = parcela;
     }

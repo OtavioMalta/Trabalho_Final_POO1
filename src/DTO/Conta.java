@@ -2,8 +2,6 @@ package DTO;
 import java.util.ArrayList;
 import java.util.Date;
 
-import Util.GeradorId;
-
 public abstract class Conta {
     protected ArrayList<Cliente> clientes;
     protected long idAgencia;
@@ -11,7 +9,8 @@ public abstract class Conta {
     protected double saldo;
     protected Date acesso;
     protected long id;
-    protected static GeradorId gId = new GeradorId();
+    
+    private static long IDConta = 1;
 
     
     public Conta() {
@@ -23,7 +22,7 @@ public abstract class Conta {
         this.criacao = new Date();
         this.saldo = saldo;
         this.acesso = new Date();
-        this.id = gId.gerarIdConta();
+        this.id = Conta.IDConta++;
         this.clientes = new ArrayList<>();
     }
 

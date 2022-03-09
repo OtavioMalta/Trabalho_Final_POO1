@@ -2,7 +2,6 @@ package DTO;
 import java.util.ArrayList;
 import java.util.Date;
 
-import Util.GeradorId;
 
 public class Funcionario extends Pessoa{
     protected long id;
@@ -12,12 +11,12 @@ public class Funcionario extends Pessoa{
     protected Supervisor supervisor;
     protected Date admissao;
     protected Agencia agencia;
-    protected static GeradorId gId = new GeradorId();
+    private static long IDFuncionario = 1;
 
 
     public Funcionario( String nome, String telefone, ArrayList<Pessoa> dependentes, Supervisor supervisor, Date admissao, Agencia agencia) {
         super(nome);
-        this.id = gId.gerarIdFuncionario();
+        this.id = Funcionario.IDFuncionario++;
         this.telefone = telefone;
         this.dependetes = dependentes;
         this.supervisor = supervisor;
