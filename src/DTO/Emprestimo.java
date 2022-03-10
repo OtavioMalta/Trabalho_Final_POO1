@@ -19,7 +19,7 @@ public class Emprestimo {
     }
 
 
-
+ 
     public Agencia getAgencia() {
         return this.agencia;
     }

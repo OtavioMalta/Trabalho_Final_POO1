@@ -23,7 +23,7 @@ public class Funcionario extends Pessoa{
         this.admissao = admissao;
         this.agencia = agencia;
     }
-
+ 
 
     public long getId() {
         return this.id;

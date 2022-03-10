@@ -45,7 +45,7 @@ public class ContaCorrente extends Conta{
         }
         operacoes.add(operacao);
     }
-
+ 
     public void geraCupom(){
         
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");

@@ -13,14 +13,15 @@ public class Operacao {
     protected ContaCorrente conta;
 
     private static long IDOperacao = 1;
-
+ 
 
     public Operacao(Tipo tipo, String descricao, double valor, Date data, ContaCorrente conta) {
+        this.id = Operacao.IDOperacao++;
         this.tipo = tipo;
         this.descricao = descricao;
         this.valor = valor;
         this.data = data;
-        this.id = Operacao.IDOperacao++;
+    
         this.conta = conta;
      }
 

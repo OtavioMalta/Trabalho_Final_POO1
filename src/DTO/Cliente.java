@@ -27,7 +27,7 @@ public class Cliente extends Pessoa{
         this.emprestimos = new ArrayList<>();
         //this.gerente = gerente;
     }
-
+ 
     public long getId() {
         return this.id;
     }

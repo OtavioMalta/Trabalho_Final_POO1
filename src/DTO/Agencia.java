@@ -16,7 +16,7 @@ public class Agencia {
         this.nome = nome;
         this.id = Agencia.IDAgencia++;
         this.emprestimos = new ArrayList<>();
-
+ 
     }
 
 

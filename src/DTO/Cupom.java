@@ -18,8 +18,7 @@ public class Cupom {
 
     public void setNumero(long numero) {
         this.numero = numero;
-    }
-
+    } 
     public Date getValidade() {
         return this.validade;
     }
