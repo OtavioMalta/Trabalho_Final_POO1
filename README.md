@@ -2,8 +2,9 @@
 
 ## Implementar
 
-- [ ] Registro do saldo de cada conta
+- [x] Registro do saldo de cada conta
 - [ ] Exceptions
 - [ ] UML
-- [ ] Supervisor e Gerente
+- [x] Supervisor e Gerente
 - [ ] JavaFX
+- [x] Dependentes
