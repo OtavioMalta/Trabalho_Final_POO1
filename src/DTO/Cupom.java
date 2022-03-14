@@ -1,7 +1,5 @@
 package DTO;
 import java.util.Date;
-
-
 public class Cupom {
     protected long numero;
     protected Date validade;

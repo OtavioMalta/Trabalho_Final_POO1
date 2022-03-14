@@ -2,19 +2,18 @@ package DTO;
 import java.util.ArrayList;
 import java.util.Date;
 
-
 public class Funcionario extends Pessoa{
     protected long id;
     protected String nome;
     protected String telefone;
-    protected ArrayList<Pessoa> dependetes;
+    protected ArrayList<Dependente> dependetes;
     protected Supervisor supervisor;
     protected Date admissao;
     protected Agencia agencia;
     private static long IDFuncionario = 1;
 
 
-    public Funcionario( String nome, String telefone, ArrayList<Pessoa> dependentes, Supervisor supervisor, Date admissao, Agencia agencia) {
+    public Funcionario( String nome, String telefone, ArrayList<Dependente> dependentes, Supervisor supervisor, Date admissao, Agencia agencia) {
         super(nome);
         this.id = Funcionario.IDFuncionario++;
         this.telefone = telefone;
@@ -49,11 +48,11 @@ public class Funcionario extends Pessoa{
         this.telefone = telefone;
     }
 
-    public ArrayList<Pessoa> getDependentes() {
+    public ArrayList<Dependente> getDependentes() {
         return this.dependetes;
     }
 
-    public void setDependentes(ArrayList<Pessoa> dependentes) {
+    public void setDependentes(ArrayList<Dependente> dependentes) {
         this.dependetes = dependentes;
     }
 

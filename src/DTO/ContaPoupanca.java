@@ -1,5 +1,4 @@
 package DTO;
-import java.util.Date;
 
 public class ContaPoupanca extends Conta{
     private double juros;
@@ -10,13 +9,11 @@ public class ContaPoupanca extends Conta{
     }
 
     public double getJuros() {
-        super.acesso = new Date();
         return this.juros;
     }
 
     public void setJuros(double juros) {
-        
-        super.acesso = new Date();
+        registros.add(new Registro(this.saldo));
         this.juros = juros;
     }
  
@@ -26,7 +23,7 @@ public class ContaPoupanca extends Conta{
         "idAgencia='" + getIdAgencia() + "'\n" +
         "criacao='" + getCriacao() + "'\n" +
         "saldo='" + getSaldo() + "'\n" +
-        "acesso='" + getAcesso() + "'\n" +
+        "acesso='" + getRegistro().get(getRegistro().size()) + "'\n" +
         "juros='" + getJuros() + "'\n" +
         "idClientes=" );
         imprimirClientes();

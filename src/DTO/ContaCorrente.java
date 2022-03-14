@@ -19,12 +19,11 @@ public class ContaCorrente extends Conta{
     }
 
     public double getTarifa() {
-        super.acesso = new Date();
         return this.tarifa;
     }
 
     public void setTarifa(double tarifa) {
-        super.acesso = new Date();
+        registros.add(new Registro(this.saldo));
         this.tarifa = tarifa;
     }
 
@@ -38,12 +37,14 @@ public class ContaCorrente extends Conta{
     }
 
     public void realizarOperacao(Tipo tipo, String descricao, double valor, Date data){
-        super.acesso = new Date();
+        
         Operacao operacao = new Operacao(tipo, descricao, valor, data, this);
         if(valor>5000){
             geraCupom();
         }
         operacoes.add(operacao);
+        registros.add(new Registro(this.saldo));
+
     }
  
     public void geraCupom(){
@@ -71,7 +72,7 @@ public class ContaCorrente extends Conta{
         "idAgencia='" + getIdAgencia() + "'\n" +
         "criacao='" + getCriacao() + "'\n" +
         "saldo='" + getSaldo() + "'\n" +
-        "acesso='" + getAcesso() + "'\n" +
+        "acesso='" + getRegistro().get(getRegistro().size()) + "'\n" +
         "tarifa='" + getTarifa() + "'\n" +
         "operacoes=");
         imprimirOperacoes();
