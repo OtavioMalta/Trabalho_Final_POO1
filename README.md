@@ -7,3 +7,4 @@
 - [ ] UML
 - [ ] Supervisor e Gerente
 - [ ] JavaFX
+- [ ] Dependentes
