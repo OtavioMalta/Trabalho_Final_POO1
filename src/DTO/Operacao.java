@@ -65,11 +65,20 @@ public class Operacao {
         this.id = id;
     }
 
-    public void imprimirOperacao(){
-        System.out.print("tipo= '"+ getTipo()+"'"+
-        "descricao= '" + getDescricao()+"'"+
-        "valor= '" + getValor()+"'"+
-        "data= '" + getData()+"'"+
-        "numero= '" + getId()+"'");
+
+    public ContaCorrente getConta() {
+        return this.conta;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+            "tipo='" + getTipo() + "'" +
+            "\ndescricao='" + getDescricao() + "'" +
+            "\nvalor='" + getValor() + "'" +
+            "\ndata='" + getData() + "'" +
+            "\nid='" + getId() + "'" +
+            "}\n";
+    }
+
 }

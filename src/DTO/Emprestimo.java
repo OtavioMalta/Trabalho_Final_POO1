@@ -59,22 +59,14 @@ public class Emprestimo {
     public void setParcela(int parcela) {
         this.parcela = parcela;
     }
-
-    public void imprimirEmprestimo(){
-        System.out.println(
-        "agencia='"+getAgencia().getNome()+"'\n"+
-        
-        "id='"+getId()+"'\n"+
-        "valor='"+getValor()+"'\n"+
-        "parcela='"+getParcela()+"'\n"+
-        "clientes='"
-        );
-        imprimirClientes();
-    }  
-
-    public void imprimirClientes(){
-        for(Cliente c : clientes){
-            System.out.println(c.getId());
-        }
+    @Override
+    public String toString() {
+        return "{" +
+            "clientes='" + getClientes() + "'" +
+            "\nid='" + getId() + "'" +
+            "\nvalor='" + getValor() + "'" +
+            "\nparcela='" + getParcela() + "'" +
+            "}\n";
     }
+    
 }

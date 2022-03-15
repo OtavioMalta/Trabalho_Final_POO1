@@ -16,24 +16,23 @@ public class ContaPoupanca extends Conta{
         registros.add(new Registro(this.saldo));
         this.juros = juros;
     }
- 
+    
     @Override
-    public void imprimirConta() {
-        System.out.println("ID ='" + getId() + "'\n" +
-        "idAgencia='" + getIdAgencia() + "'\n" +
-        "criacao='" + getCriacao() + "'\n" +
-        "saldo='" + getSaldo() + "'\n" +
-        "acesso='" + getRegistro().get(getRegistro().size()) + "'\n" +
-        "juros='" + getJuros() + "'\n" +
-        "idClientes=" );
-        imprimirClientes();
+    public String toString() {
+        return "{" +
+            "clientes='" + getClientes() + "'" +
+            "\nidAgencia='" + getIdAgencia() + "'" +
+            "\ncriacao='" + getCriacao() + "'" +
+            "\nsaldo='" + getSaldo() + "'" +
+            "\nregistros='" + getRegistros() + "'" +
+            "\nid='" + getId() + "'" +
+            "\njuros='" + getJuros() + "'" +
+            "}\n";
     }
-  
-    public void imprimirClientes(){
-        for(Cliente c: clientes){
-            System.out.println(c.getId());
-        }
-    }
+
+   
+
+    
 
     
 }

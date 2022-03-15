@@ -27,4 +27,14 @@ public class Registro {
         this.saldo = saldo;
     }
 
+
+    @Override
+    public String toString() {
+        return "{" +
+            " data='" + getData() + "'" +
+            "\nsaldo='" + getSaldo() + "'" +
+            "}\n";
+    }
+    
+
 }

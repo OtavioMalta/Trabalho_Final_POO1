@@ -1,6 +1,8 @@
 package DTO;
 import java.util.ArrayList;
 
+import Util.SaldoInsuficienteException;
+
 public class Agencia {
     protected String cidade;
     protected String estado;
@@ -18,8 +20,6 @@ public class Agencia {
         this.emprestimos = new ArrayList<>();
  
     }
-
-
     public long getId() {
         return this.id;
     }
@@ -61,19 +61,29 @@ public class Agencia {
     }
     
     public void realizarEmprestimo(ArrayList<Cliente> clientes, double valor, int parcela){
-       
+       if(valor>0){
         Emprestimo emprestimo = new Emprestimo(this, clientes, valor, parcela);
         this.emprestimos.add(emprestimo);
-
         for(Cliente c: clientes){
             c.realizarEmprestimo(emprestimo);
         }
+       }else{
+           throw new SaldoInsuficienteException("Valor Inválido!");
+       }
+       
+       
     }
 
-    public void imprimirAgencia(){
-        System.out.println("cidade= '" + getCidade() + "'\n"+
-        "estado= '" + getEstado() + "'\n"+
-        "nome= '" + getNome() + "'\n"+
-        "id= '" + getId() + "'\n");
+
+    @Override
+    public String toString() {
+        return "{" +
+            "cidade='" + getCidade() + "'" +
+            "\nestado='" + getEstado() + "'" +
+            "\nnome='" + getNome() + "'" +
+            "\nid='" + getId() + "'" +
+            "\nemprestimos='" + getEmprestimos() + "'" +
+            "}\n";
     }
+    
 }

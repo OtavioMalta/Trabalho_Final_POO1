@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import Util.SaldoInsuficienteException;
 import Util.Tipo;
 
 public class ContaCorrente extends Conta{
@@ -37,59 +38,49 @@ public class ContaCorrente extends Conta{
     }
 
     public void realizarOperacao(Tipo tipo, String descricao, double valor, Date data){
-        
+        if((valor *-1) > this.saldo){
+            throw new SaldoInsuficienteException("Saldo insuficiente");
+        }else{
+            setSaldo(getSaldo() + valor);
+        }
         Operacao operacao = new Operacao(tipo, descricao, valor, data, this);
         if(valor>5000){
             geraCupom();
         }
         operacoes.add(operacao);
         registros.add(new Registro(this.saldo));
-
     }
  
     public void geraCupom(){
-        
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
             Cupom cupom = new Cupom(f.parse("25/05/2023"));
-            adicionarCupom(cupom);
-            System.out.println("Cupom gerado com sucesso. Numero: " + cupom.getNumero());
+            cupons.add(cupom);
+            System.out.println("Cupom gerado com sucesso. Numero: " + cupom.getNumero()+"\n");
      
         } catch (ParseException e) {
             e.printStackTrace();
         }
     }
 
-    public void adicionarCupom(Cupom c){
-        cupons.add(c);
+    public ArrayList<Cupom> getCupons() {
+        return this.cupons;
     }
 
     @Override
-    public void imprimirConta() {
-        System.out.println("------------------\n"+
-        "ID ='" + getId() + "'\n" +
-        "idAgencia='" + getIdAgencia() + "'\n" +
-        "criacao='" + getCriacao() + "'\n" +
-        "saldo='" + getSaldo() + "'\n" +
-        "acesso='" + getRegistro().get(getRegistro().size()) + "'\n" +
-        "tarifa='" + getTarifa() + "'\n" +
-        "operacoes=");
-        imprimirOperacoes();
-        System.out.println("idClientes=");
-        imprimirClientes();
+    public String toString() {
+        return "{" +
+            "\nidAgencia='" + getIdAgencia() + "'" +
+            "\ncriacao='" + getCriacao() + "'" +
+            "\nsaldo='" + getSaldo() + "'" +
+            "\nregistros='" + getRegistros() + "'" +
+            "\nid='" + getId() + "'" +
+            "\ntarifa='" + getTarifa() + "'" +
+            "\noperacoes='" + getOperacoes() + "'" +
+            "\ncupons='" + getCupons() + "'" +
+            "}\n";
     }
-
-    private void imprimirOperacoes() {
-        for(Operacao o : operacoes){
-            o.imprimirOperacao();
-        }
-    }
-
-      
-    public void imprimirClientes(){
-        for(Cliente c: clientes){
-            System.out.println(c.getId());
-        }
-    }
+    
+    
 }

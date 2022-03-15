@@ -11,7 +11,7 @@ public class Cliente extends Pessoa{
     protected String cidade;
     protected String estado;
     protected ArrayList<Emprestimo> emprestimos;
-    //protected Gerente gerente;
+    protected Gerente gerente;
     protected ArrayList<Conta> contas;
     private static long IDCliente = 1;
 
@@ -25,18 +25,24 @@ public class Cliente extends Pessoa{
         this.estado = estado;
         this.contas = new ArrayList<>();
         this.emprestimos = new ArrayList<>();
-        //this.gerente = gerente;
     }
+
+    public Cliente(String nome, String cpf, Date nascimento, String endereco, String cidade, String estado, Gerente gerente) {
+        super(nome);
+        this.id = Cliente.IDCliente++;
+        this.cpf = cpf;
+        this.nascimento = nascimento;
+        this.endereco = endereco;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.contas = new ArrayList<>();
+        this.emprestimos = new ArrayList<>();
+        this.gerente = gerente;
+    } 
  
     public long getId() {
         return this.id;
     }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-
     public String getCpf() {
         return this.cpf;
     }
@@ -85,25 +91,19 @@ public class Cliente extends Pessoa{
         this.emprestimos = emprestimos;
     }
 
-   /* public Gerente getGerente() {
+   public Gerente getGerente() {
         return this.gerente;
     }
 
     public void setGerente(Gerente gerente) {
         this.gerente = gerente;
-    }*/
+    }
 
     public ArrayList<Conta> getContas() {
         return this.contas;
     }
 
-    public void imprimirContas(){
-        
-        for(Conta c: contas){
-            System.out.println("--------------");
-            c.imprimirConta();
-        }
-    }
+    
 
     public void setContas(ArrayList<Conta> contas) {
         this.contas = contas;
@@ -126,28 +126,20 @@ public class Cliente extends Pessoa{
         this.emprestimos.add(emprestimo);
     }
 
-    public void imprimirCliente() {
-        System.out.println("id='" + getId() + "'\n" +
-            "nome='" + getNome() + "'\n" +
-            "cpf='" + getCpf() + "'\n" +
-            "nascimento='" + getNascimento() + "'\n" +
-            "endereco='" + getEndereco() + "'\n" +
-            "cidade='" + getCidade() + "'\n" +
-            "estado='" + getEstado() + "'\n" +
-            "emprestimos="
-        );
-        imprimirEmprestimo();
-        System.out.println("contas=");
-        imprimirContas();
-            
-    }
 
-    public void imprimirEmprestimo(){
-        for(Emprestimo e: emprestimos){
-            System.out.println("--------------");
-            e.imprimirEmprestimo();
-        }
+    @Override
+    public String toString() {
+        return "{" +
+            "id='" + getId() + "'" +
+            "\nnome='" + getNome() + "'" +
+            "\ncpf='" + getCpf() + "'" +
+            "\nnascimento='" + getNascimento() + "'" +
+            "\nendereco='" + getEndereco() + "'" +
+            "\ncidade='" + getCidade() + "'" +
+            "\nestado='" + getEstado() + "'" +
+            "}\n";
     }
+   
 
 
 }

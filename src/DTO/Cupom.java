@@ -25,4 +25,13 @@ public class Cupom {
         this.validade = validade;
     }
 
+
+    @Override
+    public String toString() {
+        return "{" +
+            " numero='" + getNumero() + "'" +
+            ", validade='" + getValidade() + "'" +
+            "}\n";
+    }
+
 }

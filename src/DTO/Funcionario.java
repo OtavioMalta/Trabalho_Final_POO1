@@ -2,7 +2,7 @@ package DTO;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Funcionario extends Pessoa{
+public abstract class Funcionario extends Pessoa{
     protected long id;
     protected String nome;
     protected String telefone;
@@ -78,6 +78,27 @@ public class Funcionario extends Pessoa{
 
     public void setAgencia(Agencia agencia) {
         this.agencia = agencia;
+    }
+
+
+    public ArrayList<Dependente> getDependetes() {
+        return this.dependetes;
+    }
+
+    public void adicionarDependente(Dependente d){
+        this.dependetes.add(d);
+    }
+    @Override
+    public String toString() {
+        return "{" +
+            "id='" + getId() + "'" +
+            "\nnome='" + getNome() + "'" +
+            "\ntelefone='" + getTelefone() + "'" +
+            "\ndependetes='" + getDependetes() + "'" +
+            "\nsupervisor='" + getSupervisor() + "'" +
+            "\nadmissao='" + getAdmissao() + "'" +
+            "\nagencia='" + getAgencia() + "'" +
+            "}\n";
     }
 
 

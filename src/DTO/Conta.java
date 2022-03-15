@@ -23,6 +23,7 @@ public abstract class Conta {
         this.registros = new ArrayList<>();
         this.id = Conta.IDConta++;
         this.clientes = new ArrayList<>();
+        registros.add(new Registro(saldo));
     }
 
     public ArrayList<Cliente> getClientes() {
@@ -48,7 +49,6 @@ public abstract class Conta {
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
-        registros.add(new Registro(this.saldo));
     }
 
     public ArrayList<Registro> getRegistro() {
@@ -64,12 +64,10 @@ public abstract class Conta {
     }
 
     public void atribuirCliente(Cliente cliente){
-        registros.add(new Registro(this.saldo));
         clientes.add(cliente);
     }
 
     public void atribuirCliente(ArrayList<Cliente> clientes){
-        registros.add(new Registro(this.saldo));
         for(Cliente c : clientes){
             this.clientes.add(c);
         }
@@ -78,11 +76,8 @@ public abstract class Conta {
     public Registro ultimoAcesso(){
         return registros.get(registros.size());
     }
-    
-    public abstract void imprimirConta();
 
-
-
-   
-
+    public ArrayList<Registro> getRegistros() {
+        return this.registros;
+    }
 }

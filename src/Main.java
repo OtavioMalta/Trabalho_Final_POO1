@@ -8,6 +8,7 @@ import DTO.Agencia;
 import DTO.Cliente;
 import DTO.ContaCorrente;
 import DTO.ContaPoupanca;
+import Util.SaldoInsuficienteException;
 import Util.Tipo;
 
 public class Main {
@@ -22,22 +23,24 @@ public class Main {
         clientes.add(cliente2);
 
         Agencia agencia1 = new Agencia("Uberaba", "mg", "AgenciaPrincipal");
-        agencia1.imprimirAgencia();
         Agencia agencia2 = new Agencia("Restinga", "sp", "AgenciaSecundaria");
-        agencia2.imprimirAgencia();
-
-        ContaCorrente cc = new ContaCorrente(agencia2.getId(), 5202.21, 2.3);
-        cliente1.adicionarConta(cc);
-        cc.realizarOperacao(Tipo.DEBITO, "Luz", 6000, new Date());
         
-        ContaPoupanca cp = new ContaPoupanca(agencia1.getId(), 4500, 3);
-        cliente2.adicionarConta(cp);
 
-        cp.imprimirConta();
+        ContaCorrente cc = new ContaCorrente(agencia2.getId(), 12000, 2.3);
+        cliente1.adicionarConta(cc);
+        try{
+            cc.realizarOperacao(Tipo.DEBITO, "Luz", -6000, new Date());
+            cc.realizarOperacao(Tipo.DEBITO, "Luz", 300, new Date());
+            cc.realizarOperacao(Tipo.DEBITO, "Luz", -20, new Date());
+            cc.realizarOperacao(Tipo.DEBITO, "Luz", -20000, new Date());
+        }catch(SaldoInsuficienteException e){
+            System.out.println(e.getMessage());
+        }
+        System.out.println(cc);
+       
 
-        agencia1.realizarEmprestimo(clientes, 9500, 2);
-        System.out.println("\n\n");
-        cliente2.imprimirCliente();
+        /*agencia1.realizarEmprestimo(clientes, 9500, 2);
+        System.out.println("\n\n");*/
         
         
       
