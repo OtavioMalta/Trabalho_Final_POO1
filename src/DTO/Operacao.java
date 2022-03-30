@@ -4,13 +4,13 @@ import java.util.Date;
 import Util.Tipo;
 
 public class Operacao {
-    protected Tipo tipo;
-    protected String descricao;
-    protected double valor;
-    protected Date data;
-    protected long id;
+    private Tipo tipo;
+    private String descricao;
+    private double valor;
+    private Date data;
+    private long id;
 
-    protected ContaCorrente conta;
+    private ContaCorrente conta;
 
     private static long IDOperacao = 1;
  

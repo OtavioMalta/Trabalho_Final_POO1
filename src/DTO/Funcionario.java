@@ -86,7 +86,12 @@ public abstract class Funcionario extends Pessoa{
     }
 
     public void adicionarDependente(Dependente d){
-        this.dependetes.add(d);
+        try{
+            this.dependetes.add(d);
+
+        }catch (Exception e){
+            e.getMessage();
+        }
     }
     @Override
     public String toString() {

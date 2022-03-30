@@ -3,11 +3,11 @@ import java.util.ArrayList;
 
 
 public class Emprestimo {
-    protected Agencia agencia;
-    protected ArrayList<Cliente> clientes;
-    protected long id;
-    protected double valor;
-    protected int parcela;
+    private Agencia agencia;
+    private ArrayList<Cliente> clientes;
+    private long id;
+    private double valor;
+    private int parcela;
     private static long IDEmprestimo = 1;
 
     public Emprestimo(Agencia agencia, ArrayList<Cliente> clientes, double valor, int parcela) {

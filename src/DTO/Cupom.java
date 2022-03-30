@@ -1,8 +1,8 @@
 package DTO;
 import java.util.Date;
 public class Cupom {
-    protected long numero;
-    protected Date validade;
+    private long numero;
+    private Date validade;
     
     private static long IDCupom = 1;
 

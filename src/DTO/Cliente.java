@@ -1,19 +1,23 @@
 package DTO;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Cliente extends Pessoa{
-    protected long id;
+public class Cliente extends Pessoa implements Serializable {
+
+    private static final Long serialVersionUID = 1L;
+
+    protected Long id;
     protected String nome;
     protected String cpf;
     protected Date nascimento;
     protected String endereco;
     protected String cidade;
     protected String estado;
-    protected ArrayList<Emprestimo> emprestimos;
-    protected Gerente gerente;
+    protected ArrayList<Long> emprestimos;
+    protected Long idGerente;
     protected ArrayList<Conta> contas;
-    private static long IDCliente = 1;
+    private static Long IDCliente = 1L;
 
     public Cliente(String nome, String cpf, Date nascimento, String endereco, String cidade, String estado) {
         super(nome);
@@ -27,7 +31,7 @@ public class Cliente extends Pessoa{
         this.emprestimos = new ArrayList<>();
     }
 
-    public Cliente(String nome, String cpf, Date nascimento, String endereco, String cidade, String estado, Gerente gerente) {
+    public Cliente(String nome, String cpf, Date nascimento, String endereco, String cidade, String estado, Long gerente) {
         super(nome);
         this.id = Cliente.IDCliente++;
         this.cpf = cpf;
@@ -37,10 +41,10 @@ public class Cliente extends Pessoa{
         this.estado = estado;
         this.contas = new ArrayList<>();
         this.emprestimos = new ArrayList<>();
-        this.gerente = gerente;
+        this.idGerente = gerente;
     } 
  
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
     public String getCpf() {
@@ -83,23 +87,23 @@ public class Cliente extends Pessoa{
         this.estado = estado;
     }
 
-    public ArrayList<Emprestimo> getEmprestimos() {
+    public ArrayList<Long> getEmprestimos() {
         return this.emprestimos;
     }
 
-    public void setEmprestimos(ArrayList<Emprestimo> emprestimos) {
+    public void setEmprestimos(ArrayList<Long> emprestimos) {
         this.emprestimos = emprestimos;
     }
 
-   public Gerente getGerente() {
-        return this.gerente;
+   public Long getGerente() {
+        return this.idGerente;
     }
 
-    public void setGerente(Gerente gerente) {
-        this.gerente = gerente;
+    public void setGerente(Long gerente) {
+        this.idGerente = gerente;
     }
 
-    public ArrayList<Conta> getContas() {
+    public ArrayList<Conta> getcontas() {
         return this.contas;
     }
 
@@ -116,16 +120,23 @@ public class Cliente extends Pessoa{
     }
 
     public void adicionarContas(ArrayList<Conta> contas){
-        for(Conta c: contas){
-            this.contas.add(c);
-            c.atribuirCliente(this);
-        }
+        try{
+            for(Conta c: contas){
+                this.contas.add(c);
+                c.atribuirCliente(this);
+            }    
+        }catch (Exception e){
+            e.getMessage();
+    }
     }
 
-    public void realizarEmprestimo(Emprestimo emprestimo){
-        this.emprestimos.add(emprestimo);
+    public void realizarEmprestimo(Long emprestimo){
+        try{
+            this.emprestimos.add(emprestimo);
+        }catch (Exception e){
+            e.getMessage();
     }
-
+    }
 
     @Override
     public String toString() {

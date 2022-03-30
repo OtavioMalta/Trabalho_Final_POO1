@@ -65,7 +65,7 @@ public class Agencia {
         Emprestimo emprestimo = new Emprestimo(this, clientes, valor, parcela);
         this.emprestimos.add(emprestimo);
         for(Cliente c: clientes){
-            c.realizarEmprestimo(emprestimo);
+            c.realizarEmprestimo(emprestimo.getId());
         }
        }else{
            throw new SaldoInsuficienteException("Valor Inválido!");
