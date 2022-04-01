@@ -7,21 +7,39 @@ public abstract class Funcionario extends Pessoa{
     protected String nome;
     protected String telefone;
     protected ArrayList<Dependente> dependetes;
-    protected Supervisor supervisor;
+    protected Long idSupervisor;
     protected Date admissao;
-    protected Agencia agencia;
-    private static long IDFuncionario = 1;
+    protected Long idAgencia;
+    private static long IDFuncionario =System.nanoTime();
 
 
-    public Funcionario( String nome, String telefone, ArrayList<Dependente> dependentes, Supervisor supervisor, Date admissao, Agencia agencia) {
+    public Funcionario( String nome, String telefone, ArrayList<Dependente> dependentes, Long supervisor, Date admissao, Long agencia) {
         super(nome);
         this.id = Funcionario.IDFuncionario++;
         this.telefone = telefone;
         this.dependetes = dependentes;
-        this.supervisor = supervisor;
+        this.idSupervisor = supervisor;
         this.admissao = admissao;
-        this.agencia = agencia;
+        this.idAgencia = agencia;
     }
+
+    public Funcionario(Long id, String nome, String telefone, Long supervisor, Date admissao, Long agencia) {
+        super(nome);
+        this.id = id;
+        this.telefone = telefone;
+        this.idSupervisor = supervisor;
+        this.admissao = admissao;
+        this.idAgencia = agencia;
+    } 
+    
+    public Funcionario( String nome, String telefone, Long supervisor, Date admissao, Long agencia) {
+        super(nome);
+        this.id = Funcionario.IDFuncionario++;
+        this.telefone = telefone;
+        this.idSupervisor = supervisor;
+        this.admissao = admissao;
+        this.idAgencia = agencia;
+    } 
  
 
     public long getId() {
@@ -56,14 +74,6 @@ public abstract class Funcionario extends Pessoa{
         this.dependetes = dependentes;
     }
 
-    public Supervisor getSupervisor() {
-        return this.supervisor;
-    }
-
-    public void setSupervisor(Supervisor supervisor) {
-        this.supervisor = supervisor;
-    }
-
     public Date getAdmissao() {
         return this.admissao;
     }
@@ -71,15 +81,6 @@ public abstract class Funcionario extends Pessoa{
     public void setAdmissao(Date admissao) {
         this.admissao = admissao;
     }
-
-    public Agencia getAgencia() {
-        return this.agencia;
-    }
-
-    public void setAgencia(Agencia agencia) {
-        this.agencia = agencia;
-    }
-
 
     public ArrayList<Dependente> getDependetes() {
         return this.dependetes;
@@ -93,6 +94,23 @@ public abstract class Funcionario extends Pessoa{
             e.getMessage();
         }
     }
+
+    public Long getIdSupervisor() {
+        return this.idSupervisor;
+    }
+
+    public void setIdSupervisor(Long idSupervisor) {
+        this.idSupervisor = idSupervisor;
+    }
+
+    public Long getIdAgencia() {
+        return this.idAgencia;
+    }
+
+    public void setIdAgencia(Long idAgencia) {
+        this.idAgencia = idAgencia;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -100,9 +118,9 @@ public abstract class Funcionario extends Pessoa{
             "\nnome='" + getNome() + "'" +
             "\ntelefone='" + getTelefone() + "'" +
             "\ndependetes='" + getDependetes() + "'" +
-            "\nsupervisor='" + getSupervisor() + "'" +
+            "\nsupervisor='" + getIdSupervisor() + "'" +
             "\nadmissao='" + getAdmissao() + "'" +
-            "\nagencia='" + getAgencia() + "'" +
+            "\nagencia='" + getIdAgencia() + "'" +
             "}\n";
     }
 

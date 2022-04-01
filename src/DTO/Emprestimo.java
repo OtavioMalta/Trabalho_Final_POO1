@@ -1,39 +1,55 @@
 package DTO;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
+
+import Util.Arquivo;
+import Util.ManipularArquivo;
+import Util.SemDadosException;
+import Util.Tipo;
 
 
-public class Emprestimo {
-    private Agencia agencia;
-    private ArrayList<Cliente> clientes;
+public class Emprestimo implements ManipularArquivo{
+    private Long agencia;
+    private Long cliente;
     private long id;
     private double valor;
     private int parcela;
-    private static long IDEmprestimo = 1;
+    private static long IDEmprestimo =System.nanoTime();
 
-    public Emprestimo(Agencia agencia, ArrayList<Cliente> clientes, double valor, int parcela) {
+    public Emprestimo(Long agencia, Long clientes, double valor, int parcela) {
+
+
         this.agencia = agencia;
-        this.clientes = clientes;
         this.id = Emprestimo.IDEmprestimo++;
+        this.valor = valor;
+        this.parcela = parcela;
+        this.cliente=  clientes;
+    }
+
+    public Emprestimo(Long id, Long agencia,int parcela, double valor) {
+        this.agencia = agencia;
+        this.id = id;
         this.valor = valor;
         this.parcela = parcela;
     }
 
-
- 
-    public Agencia getAgencia() {
+    public Long getAgencia() {
         return this.agencia;
     }
 
-    public void setAgencia(Agencia agencia) {
+    public void setAgencia(Long agencia) {
         this.agencia = agencia;
     }
+ 
+    
 
-    public ArrayList<Cliente> getClientes() {
-        return this.clientes;
+    public Long getClientes() {
+        return this.cliente;
     }
 
-    public void setClientes(ArrayList<Cliente> clientes) {
-        this.clientes = clientes;
+    public void setClientes(Long clientes) {
+        this.cliente = clientes;
     }
 
     public long getId() {
@@ -68,5 +84,43 @@ public class Emprestimo {
             "\nparcela='" + getParcela() + "'" +
             "}\n";
     }
-    
+    @Override
+    public ArrayList<Emprestimo> lista() {
+        String path = "repository\\emprestimos.txt";		
+		ArrayList<Emprestimo> list = new ArrayList<Emprestimo>();
+		SimpleDateFormat formatter = new  SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy", Locale.US);
+
+        try{
+            String conteudo =Arquivo.Read(path);
+            String linhas[] = conteudo.split("\n");
+            if(conteudo == ""){
+                throw new SemDadosException("Dados não encotrados!");
+            }
+            for(String l : linhas){
+                String texto[] = l.split(",");
+                Emprestimo emprestimo = new Emprestimo(Long.parseLong(texto[0]),Long.parseLong(texto[1]),  Integer.parseInt(texto[1]),Double.parseDouble(texto[2]));
+               list.add(emprestimo);
+            }
+        return list;
+		}catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+            return list;
+		}
+	}
+
+    @Override
+    public void salvar() {
+        try{
+            String path = "repository\\emprestimos.txt";
+            String texto = getId() + "," +
+            getAgencia() + "," +
+            getParcela() +","+
+            getValor()
+            ;
+            Arquivo.Write(path, texto);
+        }
+		catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+    }
 }

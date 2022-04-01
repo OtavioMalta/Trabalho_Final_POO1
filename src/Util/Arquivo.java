@@ -6,7 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Arquivo {
+public interface Arquivo {
+    
     public static String Read(String Caminho){
         String conteudo = "";
         try {
@@ -22,11 +23,11 @@ public class Arquivo {
                 arq.close();
                 return conteudo;
             } catch (IOException ex) {
-                System.out.println("Erro: Não foi possível ler o arquivo!");
+                System.out.println("Não foi possível ler o arquivo!");
                 return "";
             }
         } catch (FileNotFoundException ex) {
-            System.out.println("Erro: Arquivo não encontrado!");
+            System.out.println("Arquivo não encontrado!");
             return "";
         }
     }

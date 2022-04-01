@@ -2,15 +2,17 @@ package DTO;
 import java.util.ArrayList;
 import java.util.Date;
 
-public abstract class Conta {
+import Util.ManipularArquivo;
+
+public abstract class Conta implements ManipularArquivo{
     protected ArrayList<Cliente> clientes;
     protected long idAgencia;
     protected Date criacao;
     protected double saldo;
-    protected ArrayList<Registro> registros;
+    protected ArrayList<Long> idRegistros;
     protected long id;
     
-    private static long IDConta = 1;
+    private static long IDConta = System.nanoTime();
 
     public Conta() {
     }
@@ -20,10 +22,9 @@ public abstract class Conta {
         this.idAgencia = idAgencia;
         this.criacao = new Date();
         this.saldo = saldo;
-        this.registros = new ArrayList<>();
+        this.idRegistros = new ArrayList<>();
         this.id = Conta.IDConta++;
         this.clientes = new ArrayList<>();
-        registros.add(new Registro(saldo));
     }
 
     public ArrayList<Cliente> getClientes() {
@@ -39,7 +40,7 @@ public abstract class Conta {
     }
 
     public void setIdAgencia(long idAgencia) {
-        registros.add(new Registro(this.saldo));
+        idRegistros.add(new Registro(this.saldo,this.id).getId());
         this.idAgencia = idAgencia;
     }
 
@@ -51,8 +52,8 @@ public abstract class Conta {
         this.saldo = saldo;
     }
 
-    public ArrayList<Registro> getRegistro() {
-        return this.registros;
+    public ArrayList<Long> getIdRegistro() {
+        return this.idRegistros;
     }
 
     public Date getCriacao() {
@@ -73,11 +74,7 @@ public abstract class Conta {
         }
     }
 
-    public Registro ultimoAcesso(){
-        return registros.get(registros.size());
-    }
-
-    public ArrayList<Registro> getRegistros() {
-        return this.registros;
+    public ArrayList<Long> getRegistros() {
+        return this.idRegistros;
     }
 }

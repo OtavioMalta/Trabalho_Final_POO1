@@ -4,7 +4,7 @@ public class Cupom {
     private long numero;
     private Date validade;
     
-    private static long IDCupom = 1;
+    private static long IDCupom = System.nanoTime();
 
     public Cupom( Date validade) {
         this.numero = Cupom.IDCupom++;
