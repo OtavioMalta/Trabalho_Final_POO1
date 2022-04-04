@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.CadastrarFuncionarioController">
+   <children>
+      <Pane prefHeight="412.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="168.0" layoutY="14.0" text="Cadastrar Novo Funcionario" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="111.0" layoutY="152.0" text="Nome" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_nome" layoutX="147.0" layoutY="152.0" prefHeight="25.0" prefWidth="180.0" />
+            <Label layoutX="335.0" layoutY="152.0" text="Telefone" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_telefone" layoutX="397.0" layoutY="152.0" prefHeight="25.0" prefWidth="109.0" />
+            <Label layoutX="111.0" layoutY="216.0" text="Supervisor" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_supervisor" layoutX="194.0" layoutY="216.0" prefHeight="25.0" prefWidth="317.0" />
+            <Label layoutX="121.0" layoutY="264.0" text="Agencia" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_agencia" layoutX="194.0" layoutY="263.0" prefHeight="25.0" prefWidth="180.0" />
+            <Button fx:id="btn_VoltarMenuInicial" layoutX="205.0" layoutY="341.0" mnemonicParsing="false" onAction="#VoltarParaMenuInicial" prefHeight="35.0" prefWidth="64.0" text="Voltar" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_SalvarNovoFuncionario" layoutX="295.0" layoutY="341.0" mnemonicParsing="false" onAction="#SalvarFuncionario" prefHeight="35.0" prefWidth="64.0" text="Salvar" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</VBox>

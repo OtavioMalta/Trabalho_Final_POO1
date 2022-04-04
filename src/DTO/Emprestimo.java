@@ -11,13 +11,13 @@ import Util.Tipo;
 
 public class Emprestimo implements ManipularArquivo{
     private Long agencia;
-    private Long cliente;
+    private Integer cliente;
     private long id;
     private double valor;
     private int parcela;
     private static long IDEmprestimo =System.nanoTime();
 
-    public Emprestimo(Long agencia, Long clientes, double valor, int parcela) {
+    public Emprestimo(Long agencia, Integer clientes, double valor, int parcela) {
 
 
         this.agencia = agencia;
@@ -27,11 +27,12 @@ public class Emprestimo implements ManipularArquivo{
         this.cliente=  clientes;
     }
 
-    public Emprestimo(Long id, Long agencia,int parcela, double valor) {
+    public Emprestimo(Long id, Long agencia,int parcela, double valor, Integer cliente) {
         this.agencia = agencia;
         this.id = id;
         this.valor = valor;
         this.parcela = parcela;
+        this.cliente = cliente;
     }
 
     public Long getAgencia() {
@@ -44,11 +45,11 @@ public class Emprestimo implements ManipularArquivo{
  
     
 
-    public Long getClientes() {
+    public Integer getClientes() {
         return this.cliente;
     }
 
-    public void setClientes(Long clientes) {
+    public void setClientes(Integer clientes) {
         this.cliente = clientes;
     }
 
@@ -98,7 +99,7 @@ public class Emprestimo implements ManipularArquivo{
             }
             for(String l : linhas){
                 String texto[] = l.split(",");
-                Emprestimo emprestimo = new Emprestimo(Long.parseLong(texto[0]),Long.parseLong(texto[1]),  Integer.parseInt(texto[1]),Double.parseDouble(texto[2]));
+                Emprestimo emprestimo = new Emprestimo(Long.parseLong(texto[0]),Long.parseLong(texto[1]),  Integer.parseInt(texto[2]),Double.parseDouble(texto[3]), Integer.parseInt(texto[4]));
                list.add(emprestimo);
             }
         return list;
@@ -115,7 +116,8 @@ public class Emprestimo implements ManipularArquivo{
             String texto = getId() + "," +
             getAgencia() + "," +
             getParcela() +","+
-            getValor()
+            getValor() +","+
+            getClientes()
             ;
             Arquivo.Write(path, texto);
         }

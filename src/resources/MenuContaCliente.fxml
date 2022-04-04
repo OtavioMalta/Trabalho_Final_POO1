@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.MenuContaClienteController">
+   <children>
+      <Pane prefHeight="484.0" prefWidth="600.0">
+         <children>
+            <Label fx:id="nome" layoutX="44.0" layoutY="14.0" text="Nome">
+               <font>
+                  <Font name="Agency FB" size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.658823549747467" green="0.125490203499794" blue="0.125490203499794" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="id" layoutX="90.0" layoutY="75.0" text="ID" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="22.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_addConta" layoutX="157.0" layoutY="143.0" mnemonicParsing="false" onAction="#AdicionarConta" prefHeight="37.0" prefWidth="289.0" text="Adicionar Conta" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_slcConta" layoutX="155.0" layoutY="188.0" mnemonicParsing="false" onAction="#SelecionarConta" prefHeight="37.0" prefWidth="289.0" text="Selecionar Conta" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="logout" layoutX="473.0" layoutY="339.0" mnemonicParsing="false" onAction="#Logout" text="Logout">
+               <font>
+                  <Font name="Agency FB" size="18.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.658823549747467" green="0.125490203499794" blue="0.125490203499794" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Button>
+            <Label layoutX="459.0" layoutY="24.0" text="Ultimo Acesso">
+               <font>
+                  <Font name="Agency FB" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="ultimoAcesso" layoutX="446.0" layoutY="55.0" text="Label" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="64.0" layoutY="54.0" text="Número CLiente:">
+               <font>
+                  <Font name="Agency FB" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</VBox>

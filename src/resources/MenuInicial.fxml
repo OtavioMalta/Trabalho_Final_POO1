@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.MenuInicialController">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Pane layoutY="-1.0" prefHeight="30.0" prefWidth="600.0" />
+            <Pane layoutX="38.0" layoutY="29.0" prefHeight="289.0" prefWidth="456.0">
+               <children>
+                  <Label layoutY="6.0" prefHeight="95.0" prefWidth="341.0" text="Menu Inicial" textFill="#a82020">
+                     <font>
+                        <Font name="Agency FB" size="50.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nomeAgencia" layoutX="42.0" layoutY="84.0" text="Label" textFill="#a82020">
+                     <font>
+                        <Font name="Agency FB" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="cidadeAgencia" layoutX="42.0" layoutY="128.0" text="Label" textFill="#a82020">
+                     <font>
+                        <Font name="Agency FB" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="estadoAgencia" layoutX="134.0" layoutY="128.0" text="Label" textFill="#a82020">
+                     <font>
+                        <Font name="Agency FB" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="idAgencia" layoutX="134.0" layoutY="173.0" text="Label" textFill="#a82020">
+                     <font>
+                        <Font name="Agency FB" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="42.0" layoutY="173.0" text="ID" textFill="#a82020">
+                     <font>
+                        <Font name="Agency FB" size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Button fx:id="btn_AcessarFuncionario" layoutX="481.0" layoutY="315.0" mnemonicParsing="false" onAction="#AcessarFuncionarioLogin" prefHeight="49.0" prefWidth="105.0" text="Login Funcionario" textAlignment="CENTER" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_NovoFuncionario" layoutX="481.0" layoutY="253.0" mnemonicParsing="false" onAction="#CadastrarFuncionario" prefHeight="49.0" prefWidth="105.0" text="Novo Funcionario" textAlignment="CENTER" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_AcessarCliente" layoutX="481.0" layoutY="86.0" mnemonicParsing="false" onAction="#AcessarClienteLogin" prefHeight="49.0" prefWidth="105.0" text="Login Cliente" textAlignment="CENTER" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_NovoCliente" layoutX="481.0" layoutY="29.0" mnemonicParsing="false" onAction="#CadastrarCliente" prefHeight="49.0" prefWidth="105.0" text="Novo Cliente" textAlignment="CENTER" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_logout" layoutX="51.0" layoutY="315.0" mnemonicParsing="false" onAction="#Logout" prefHeight="49.0" prefWidth="105.0" text="Logout" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</VBox>

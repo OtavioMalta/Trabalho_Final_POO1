@@ -10,7 +10,7 @@ import Util.SemDadosException;
 
 public class Cliente extends Pessoa implements ManipularArquivo{
 
-    protected Long id;
+    protected int id;
     protected String nome;
     protected String cpf;
     protected Date nascimento;
@@ -19,10 +19,11 @@ public class Cliente extends Pessoa implements ManipularArquivo{
     protected String estado;
     protected ArrayList<Long> emprestimos;
     protected Long idGerente;
-    protected ArrayList<Conta> contas;
-    private static Long IDCliente = System.nanoTime();
+    protected ArrayList<Long> idContas;
+    private static int IDCliente = 1;
+    private ArrayList<Conta> conta;
 
-    public Cliente(String nome, String cpf, Date nascimento, String endereco, String cidade, String estado) {
+    public Cliente(String nome, String cpf, Date nascimento, String endereco, String cidade, String estado, Long gerente) {
         super(nome);
         this.id = Cliente.IDCliente++;
         this.cpf = cpf;
@@ -30,11 +31,13 @@ public class Cliente extends Pessoa implements ManipularArquivo{
         this.endereco = endereco;
         this.cidade = cidade;
         this.estado = estado;
-        this.contas = new ArrayList<>();
+        this.idContas = new ArrayList<>();
         this.emprestimos = new ArrayList<>();
+        this.idGerente = gerente;
+        this.conta = new ArrayList<>();
     }
 
-    public Cliente(Long id,String nome, String cpf, Date nascimento, String endereco, String cidade, String estado, Long gerente) {
+    public Cliente(int id,String nome, String cpf, Date nascimento, String endereco, String cidade, String estado, Long gerente, ArrayList<Long> emprestimos, ArrayList<Long> idContas) {
         super(nome);
         this.id = id;
         this.cpf = cpf;
@@ -42,12 +45,14 @@ public class Cliente extends Pessoa implements ManipularArquivo{
         this.endereco = endereco;
         this.cidade = cidade;
         this.estado = estado;
-        this.contas = new ArrayList<>();
-        this.emprestimos = new ArrayList<>();
+        this.idContas = idContas;
+        this.emprestimos = emprestimos;
         this.idGerente = gerente;
+        
+        this.conta = new ArrayList<>();
     } 
  
-    public Long getId() {
+    public int getId() {
         return this.id;
     }
     public String getCpf() {
@@ -61,6 +66,36 @@ public class Cliente extends Pessoa implements ManipularArquivo{
     public Date getNascimento() {
         return this.nascimento;
     }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Long getIdGerente() {
+        return this.idGerente;
+    }
+
+    public void setIdGerente(Long idGerente) {
+        this.idGerente = idGerente;
+    }
+
+    public ArrayList<Long> getIdContas() {
+        return this.idContas;
+    }
+
+    
+    public ArrayList<Conta> getConta() {
+        return this.conta;
+    }
+
+
 
     public void setNascimento(Date nascimento) {
         this.nascimento = nascimento;
@@ -106,34 +141,28 @@ public class Cliente extends Pessoa implements ManipularArquivo{
         this.idGerente = gerente;
     }
 
-    public ArrayList<Conta> getcontas() {
-        return this.contas;
+    public ArrayList<Long> getidContas() {
+        return this.idContas;
     }
 
     
 
-    public void setContas(ArrayList<Conta> contas) {
-        this.contas = contas;
+    public void setidContas(ArrayList<Long> idContas) {
+        this.idContas = idContas;
     }
 
 
     public void adicionarConta(Conta conta){
-        contas.add(conta);
-        conta.atribuirCliente(this);
+        try {
+        this.conta.add(conta);
+        idContas.add(conta.getId());
+        conta.atribuirCliente(this.getId());
+        } catch (Exception e) {
+            System.out.println("Erro ao adicionar conta!");
+        }
     }
 
-    public void adicionarContas(ArrayList<Conta> contas){
-        try{
-            for(Conta c: contas){
-                this.contas.add(c);
-                c.atribuirCliente(this);
-            }    
-        }catch (Exception e){
-            e.getMessage();
-    }
-    }
-
-    public void realizarEmprestimo(Long emprestimo){
+    protected void realizarEmprestimo(Long emprestimo){
         try{
             this.emprestimos.add(emprestimo);
         }catch (Exception e){
@@ -159,15 +188,17 @@ public class Cliente extends Pessoa implements ManipularArquivo{
     public void salvar() {
         try{
             String path = "repository\\clientes.txt";
-            String texto = getId() + "," +
-            getNome() + "," +
-            getCpf() + "," +
-            getNascimento() + "," +
-            getEndereco() + "," +
-            getCidade() + "," +
-            getEstado() + ","+
-            getGerente();
-            
+            String texto = getId() + ";" +
+            getNome() + ";" +
+            getCpf() + ";" +
+            getNascimento() + ";" +
+            getEndereco() + ";" +
+            getCidade() + ";" +
+            getEstado() + ";"+
+            getGerente() + ";"+
+            getEmprestimos() + ";" +
+            getidContas();
+            System.out.println(texto);
             Arquivo.Write(path, texto);
         }
 		catch (Exception e) {
@@ -188,16 +219,25 @@ public class Cliente extends Pessoa implements ManipularArquivo{
                 throw new SemDadosException("Dados não encotrados!");
             }
             for(String l : linhas){
-                String texto[] = l.split(",");
+                String texto[] = l.split(";");
+                ArrayList<Long> idContas = new ArrayList<>();
+                ArrayList<Long> emprestimos = new ArrayList<>();
+                String emprestimo[] = texto[8].replace("[", "").replace("]", "").split(", ");
+                String conta[] = texto[9].replace("[", "").replace("]", "").split(", ");
+                for(String s : emprestimo){
+                    emprestimos.add(Long.parseLong(s));
+                }
+                for(String s : conta){
+                    idContas.add(Long.parseLong(s));
+                }
                 if(texto[7].equals("null")){
-                    Cliente cliente = new Cliente(Long.parseLong(texto[0]),texto[1], texto[2], formatter.parse(texto[3]), texto[4], texto[5], texto[6], 0l);
+                    Cliente cliente = new Cliente(Integer.parseInt(texto[0]),texto[1], texto[2], formatter.parse(texto[3]), texto[4], texto[5], texto[6], 0l, emprestimos, idContas);
                     list.add(cliente);
                 }else{
-                    Cliente cliente = new Cliente(Long.parseLong(texto[0]),texto[1], texto[2], formatter.parse(texto[3]), texto[4], texto[5], texto[6], Long.parseLong(texto[7]));
+                    Cliente cliente = new Cliente(Integer.parseInt(texto[0]),texto[1], texto[2], formatter.parse(texto[3]), texto[4], texto[5], texto[6], Long.parseLong(texto[7]),emprestimos, idContas);
                     list.add(cliente);
                 }
             }
-            
         return list;
 		}
 		catch (Exception e) {

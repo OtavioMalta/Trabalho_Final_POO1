@@ -3,6 +3,7 @@ package DTO;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.concurrent.atomic.LongAccumulator;
 
 import Util.Arquivo;
 import Util.ManipularArquivo;
@@ -16,7 +17,7 @@ public class Agencia implements ManipularArquivo {
     protected long id;
     private static long IDAgencia = System.nanoTime();
 
-    protected ArrayList<Emprestimo> emprestimos;
+    protected ArrayList<Long> emprestimos;
 
     public Agencia(String cidade, String estado, String nome) {
         this.cidade = cidade;
@@ -27,12 +28,12 @@ public class Agencia implements ManipularArquivo {
     }
 
     
-    public Agencia(Long id, String cidade, String estado, String nome) {
+    public Agencia(Long id, String cidade, String estado, String nome, ArrayList<Long> emprestimos) {
         this.cidade = cidade;
         this.estado = estado;
         this.nome = nome;
         this.id = id;
-        this.emprestimos = new ArrayList<>();
+        this.emprestimos = emprestimos;
     }
 
     public long getId() {
@@ -43,11 +44,11 @@ public class Agencia implements ManipularArquivo {
         this.id = id;
     }
 
-    public ArrayList<Emprestimo> getEmprestimos() {
+    public ArrayList<Long> getEmprestimos() {
         return this.emprestimos;
     }
 
-    public void setEmprestimos(ArrayList<Emprestimo> emprestimos) {
+    public void setEmprestimos(ArrayList<Long> emprestimos) {
         this.emprestimos = emprestimos;
     }
 
@@ -78,7 +79,7 @@ public class Agencia implements ManipularArquivo {
     public void realizarEmprestimo(Cliente cliente, double valor, int parcela) {
         if (valor > 0) {
             Emprestimo emprestimo = new Emprestimo(this.id, cliente.getId(), valor, parcela);
-            this.emprestimos.add(emprestimo);
+            this.emprestimos.add(emprestimo.getId());
             cliente.realizarEmprestimo(emprestimo.getId());
             emprestimo.salvar();
         } else {
@@ -104,7 +105,9 @@ public class Agencia implements ManipularArquivo {
             String texto = getId() + "," +
             getNome() + "," +
             getCidade() + "," +
-            getEstado();
+            getEstado() + "," +
+            getEmprestimos()
+            ;
             
             Arquivo.Write(path, texto);
         }
@@ -125,9 +128,16 @@ public class Agencia implements ManipularArquivo {
             if(conteudo == ""){
                 throw new SemDadosException("Dados não encotrados!");
             }
+            
             for(String l : linhas){
                 String texto[] = l.split(",");
-                Agencia agencia= new Agencia(Long.parseLong(texto[0]), texto[2], texto[3], texto[1]);
+                    
+                ArrayList<Long> emprestimos = new ArrayList<>();
+                String emprestimo[] = texto[4].replace("[", "").replace("]", "").split(", ");
+                for(String s : emprestimo){
+                    emprestimos.add(Long.parseLong(s));
+                }
+                Agencia agencia= new Agencia(Long.parseLong(texto[0]), texto[2], texto[3], texto[1], emprestimos);
                 list.add(agencia);
                
             }

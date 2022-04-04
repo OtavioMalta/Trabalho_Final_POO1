@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.CadastrarClienteController">
+   <children>
+      <Pane prefHeight="385.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="205.0" layoutY="-1.0" text="Cadastrar Novo Usuario" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="84.0" layoutY="107.0" text="Nome" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="65.0" layoutY="182.0" text="Nascimento" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="365.0" layoutY="107.0" text="CPF" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="310.0" layoutY="253.0" text="Estado" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="80.0" layoutY="253.0" text="Cidade" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="302.0" layoutY="182.0" text="Endereço" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_nome" layoutX="124.0" layoutY="107.0" prefHeight="25.0" prefWidth="228.0" />
+            <TextField fx:id="tf_cpf" layoutX="395.0" layoutY="107.0" />
+            <TextField fx:id="tf_nascimento" layoutX="139.0" layoutY="182.0" prefHeight="25.0" prefWidth="157.0" />
+            <TextField fx:id="tf_endereco" layoutX="361.0" layoutY="182.0" prefHeight="25.0" prefWidth="189.0" />
+            <TextField fx:id="tf_cidade" layoutX="122.0" layoutY="253.0" prefHeight="25.0" prefWidth="182.0" />
+            <TextField fx:id="tf_estado" layoutX="352.0" layoutY="253.0" prefHeight="25.0" prefWidth="203.0" />
+            <Button fx:id="btn_VoltarMenuInicial" layoutX="232.0" layoutY="335.0" mnemonicParsing="false" onAction="#VoltarParaMenuInicial" prefHeight="35.0" prefWidth="64.0" text="Voltar" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_SalvarNovoUsuario" layoutX="310.0" layoutY="335.0" mnemonicParsing="false" onAction="#SalvarCliente" prefHeight="35.0" prefWidth="64.0" text="Salvar" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+            </Button>
+            <Label layoutX="181.0" layoutY="207.0" text="dd/MM/yyyy" textFill="#a62121">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+   <opaqueInsets>
+      <Insets bottom="300.0" left="300.0" right="300.0" top="300.0" />
+   </opaqueInsets>
+</VBox>

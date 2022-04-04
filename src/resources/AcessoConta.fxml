@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.AcessoContaController">
+   <children>
+      <Pane prefHeight="445.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="231.0" layoutY="14.0" text="Acessar Conta">
+               <font>
+                  <Font name="Agency FB" size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.658823549747467" green="0.125490203499794" blue="0.125490203499794" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label layoutX="186.0" layoutY="185.0" text="ID da Conta">
+               <font>
+                  <Font name="Agency FB" size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_idConta" layoutX="294.0" layoutY="188.0" />
+            <Button fx:id="btn_voltar" layoutX="133.0" layoutY="290.0" mnemonicParsing="false" onAction="#VoltarPagina" prefHeight="38.0" prefWidth="110.0" text="Voltar" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_selecionar" layoutX="350.0" layoutY="290.0" mnemonicParsing="false" onAction="#SelecionarConta" prefHeight="38.0" prefWidth="110.0" text="Selecionar" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</VBox>

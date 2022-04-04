@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.AcessoFuncionarioController">
+   <children>
+      <Pane prefHeight="398.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="136.0" layoutY="174.0" text="Login" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="30.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_senha" layoutX="193.0" layoutY="180.0" />
+            <Button fx:id="btn_VoltarMenuInicial" layoutX="129.0" layoutY="314.0" mnemonicParsing="false" onAction="#VoltarParaMenuInicial" prefHeight="35.0" prefWidth="64.0" text="Voltar" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_EntrarLoginFuncionario" layoutX="342.0" layoutY="314.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="64.0" text="Entrar" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+            </Button>
+            <Label layoutX="211.0" layoutY="14.0" text="Acesso ao Sistema">
+               <font>
+                  <Font name="Agency FB" size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.658823549747467" green="0.125490203499794" blue="0.125490203499794" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</VBox>

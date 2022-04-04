@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.AcessoAgenciaController">
+   <children>
+      <Pane prefHeight="430.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="210.0" layoutY="14.0" text="Selecionar Agencia">
+               <font>
+                  <Font name="Agency FB" size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endY="1.0" startY="0.8483412322274881">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.658823549747467" green="0.125490203499794" blue="0.125490203499794" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label layoutX="132.0" layoutY="180.0" text="ID Agencia" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_idAgencia" layoutX="212.0" layoutY="179.0" />
+            <Button fx:id="btn_selecionar" layoutX="343.0" layoutY="237.0" mnemonicParsing="false" onAction="#CarregarAgencia" text="Selecionar" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_voltar" layoutX="166.0" layoutY="237.0" mnemonicParsing="false" onAction="#VoltarPagina" prefHeight="38.0" prefWidth="93.0" text="Voltar" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</VBox>

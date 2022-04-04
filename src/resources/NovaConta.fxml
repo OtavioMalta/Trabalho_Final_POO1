@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.NovaContaController">
+   <children>
+      <Pane prefHeight="421.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="196.0" layoutY="14.0" text="Cadastrar Nova Conta">
+               <font>
+                  <Font name="Agency FB" size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.658823549747467" green="0.125490203499794" blue="0.125490203499794" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Button fx:id="btn_voltar" layoutX="50.0" layoutY="348.0" mnemonicParsing="false" onAction="#VoltarPagina" text="Voltar" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_salvar" layoutX="484.0" layoutY="348.0" mnemonicParsing="false" onAction="#SalvarConta" text="Salvar" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Button>
+            <Label layoutX="168.0" layoutY="154.0" text="Saldo" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="168.0" layoutY="200.0" text="Tarifa / Juros" textFill="#a82020">
+               <font>
+                  <Font name="Agency FB" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_saldo" layoutX="226.0" layoutY="154.0" prefHeight="25.0" prefWidth="234.0" />
+            <TextField fx:id="tf_taxa" layoutX="269.0" layoutY="200.0" prefHeight="25.0" prefWidth="194.0" />
+            <ToggleButton fx:id="tb_tipo" layoutX="269.0" layoutY="244.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="194.0" text="Conta Corrente / Poupança" textAlignment="CENTER" />
+            <Label layoutX="204.0" layoutY="275.0" text="Não selecionado : Poupança / Selecionado: Conta Corrente" textFill="#a82020" />
+         </children>
+      </Pane>
+   </children>
+</VBox>

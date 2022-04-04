@@ -2,18 +2,25 @@ package DTO;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
 import Util.Arquivo;
-import Util.ManipularArquivo;
 import Util.SemDadosException;
 
-public class ContaPoupanca extends Conta implements ManipularArquivo{
+public class ContaPoupanca extends Conta{
     private double juros;
 
     public ContaPoupanca( long idAgencia, double saldo, double juros) {
         super(idAgencia, saldo);
         this.juros = juros;
+    }
+
+    public ContaPoupanca(long id, long idAgencia, double saldo, double juros, ArrayList<Long> registro, ArrayList<Integer> clientes, Date criacao) {
+        super(idAgencia, saldo, criacao);
+        this.id = id;
+        this.juros = juros;
+        this.clientes = clientes;
     }
 
     public double getJuros() {
@@ -42,7 +49,7 @@ public class ContaPoupanca extends Conta implements ManipularArquivo{
 
     @Override
     public ArrayList<ContaPoupanca> lista() {
-        String path = "repository\\contaP.txt";		
+        String path = "repository\\contaC.txt";		
 		ArrayList<ContaPoupanca> list = new ArrayList<ContaPoupanca>();
 		SimpleDateFormat formatter = new  SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy", Locale.US);
 
@@ -54,7 +61,27 @@ public class ContaPoupanca extends Conta implements ManipularArquivo{
             }
             for(String l : linhas){
                 String texto[] = l.split(",");
-                ContaPoupanca contaPoupanca = new ContaPoupanca(Long.parseLong(texto[0]), Double.parseDouble(texto[1]),Double.parseDouble(texto[2]));
+
+                ArrayList<Long> registros = new ArrayList<>();
+                ArrayList<Integer> clientes = new ArrayList<>();
+
+                
+
+                String registro[] = texto[9].replace("[", "").replace("]", "").split(", ");
+                for(String s : registro){
+                    registros.add(Long.parseLong(s));
+                }
+
+                String cliente[] = texto[6].replace("[", "").replace("]", "").split(", ");
+                for(String s : cliente){
+                    clientes.add(Integer.parseInt(s));
+                }
+               
+                for(String s : registro){
+                    registros.add(Long.parseLong(s));
+                }
+
+                ContaPoupanca contaPoupanca = new ContaPoupanca(Long.parseLong(texto[0]),Long.parseLong(texto[4]), Double.parseDouble(texto[2]), Double.parseDouble(texto[1]), registros, clientes, formatter.parse(texto[5]));
                 list.add(contaPoupanca);
             }
         return list;
@@ -68,9 +95,13 @@ public class ContaPoupanca extends Conta implements ManipularArquivo{
     public void salvar() {
         try{
             String path = "repository\\contaP.txt";
-            String texto = getIdAgencia() + "," +
+            String texto = getId() + "," +
+            getJuros() + "," +
             getSaldo() + "," +
-            getJuros();
+            getClientes() + "," +
+            getIdAgencia() + "," +
+            getCriacao() + "," +
+            getRegistros();
             Arquivo.Write(path, texto);
         }
 		catch (Exception e) {

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.OperacoesContaController">
+   <children>
+      <Pane prefHeight="420.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="55.0" layoutY="14.0" text="Conta">
+               <font>
+                  <Font name="Agency FB" size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.658823549747467" green="0.125490203499794" blue="0.125490203499794" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="nConta" layoutX="95.0" layoutY="65.0" text="N  conta">
+               <font>
+                  <Font name="Agency FB" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="354.0" layoutY="39.0" text="Saldo(R$)">
+               <font>
+                  <Font name="Agency FB" size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.658823549747467" green="0.125490203499794" blue="0.125490203499794" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="valor" layoutX="456.0" layoutY="39.0" text="Valor">
+               <font>
+                  <Font name="Agency FB" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="113.0" layoutY="96.0" text="Tipo:">
+               <font>
+                  <Font name="Agency FB" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="tipoConta" layoutX="160.0" layoutY="96.0" text="TipoConta">
+               <font>
+                  <Font name="Agency FB" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="160.0" layoutY="174.0" text="Depositar">
+               <font>
+                  <Font name="Agency FB" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="160.0" layoutY="219.0" text="Sacar">
+               <font>
+                  <Font name="Agency FB" size="22.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_deposito" layoutX="240.0" layoutY="175.0" />
+            <TextField fx:id="tf_saque" layoutX="226.0" layoutY="220.0" />
+            <Button fx:id="btn_confirmaDeposito" layoutX="412.0" layoutY="173.0" mnemonicParsing="false" onAction="#SalvarDeposito" text="Confirma">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.658823549747467" green="0.125490203499794" blue="0.125490203499794" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Button>
+            <Button fx:id="Btn_confirmaSaque" layoutX="389.0" layoutY="218.0" mnemonicParsing="false" onAction="#SalvarSaque" text="Confirma">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.658823549747467" green="0.125490203499794" blue="0.125490203499794" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Button>
+            <Button fx:id="brn_emprestimo" layoutX="290.0" layoutY="274.0" mnemonicParsing="false" onAction="#SolicitarEmprestimo" text="Solicitar Emprestimo">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.658823549747467" green="0.125490203499794" blue="0.125490203499794" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Button>
+            <Button fx:id="btn_extrato" layoutX="164.0" layoutY="274.0" mnemonicParsing="false" onAction="#VerificarExtrato" text="Extrato">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.658823549747467" green="0.125490203499794" blue="0.125490203499794" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Button>
+            <Button fx:id="btn_retornarMenu" layoutX="431.0" layoutY="342.0" mnemonicParsing="false" onAction="#RetornarParaMenuConta" text="Retornar Menu">
+               <font>
+                  <Font name="Agency FB" size="16.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.658823549747467" green="0.125490203499794" blue="0.125490203499794" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</VBox>

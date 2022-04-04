@@ -5,7 +5,7 @@ import java.util.Date;
 import Util.ManipularArquivo;
 
 public abstract class Conta implements ManipularArquivo{
-    protected ArrayList<Cliente> clientes;
+    protected ArrayList<Integer> clientes;
     protected long idAgencia;
     protected Date criacao;
     protected double saldo;
@@ -26,12 +26,21 @@ public abstract class Conta implements ManipularArquivo{
         this.id = Conta.IDConta++;
         this.clientes = new ArrayList<>();
     }
+    public Conta( long idAgencia, double saldo, Date criacao) {
+        
+        this.idAgencia = idAgencia;
+        this.criacao = criacao;
+        this.saldo = saldo;
+        this.idRegistros = new ArrayList<>();
+        this.id = Conta.IDConta++;
+        this.clientes = new ArrayList<>();
+    }
 
-    public ArrayList<Cliente> getClientes() {
+    public ArrayList<Integer> getClientes() {
         return this.clientes;
     }
 
-    public void setClientes(ArrayList<Cliente> cliente) {
+    public void setClientes(ArrayList<Integer> cliente) {
         this.clientes = cliente;
     }
 
@@ -64,12 +73,12 @@ public abstract class Conta implements ManipularArquivo{
         return this.id;
     }
 
-    public void atribuirCliente(Cliente cliente){
+    public void atribuirCliente(int cliente){
         clientes.add(cliente);
     }
 
-    public void atribuirCliente(ArrayList<Cliente> clientes){
-        for(Cliente c : clientes){
+    public void atribuirCliente(ArrayList<Integer> clientes){
+        for(Integer c : clientes){
             this.clientes.add(c);
         }
     }

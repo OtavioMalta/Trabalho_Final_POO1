@@ -13,14 +13,24 @@ import Util.Tipo;
 
 public class ContaCorrente extends Conta{
     private double tarifa;
-    private ArrayList<Operacao> operacoes;
-    private ArrayList<Cupom> cupons;
+    private ArrayList<Long> operacoes;
+    private ArrayList<Long> cupons;
 
     public ContaCorrente(long idAgencia, double saldo, double tarifa) {
         super(idAgencia, saldo);
         this.tarifa = tarifa;
         this.operacoes = new ArrayList<>();
         this.cupons = new ArrayList<>();
+    }
+
+    public ContaCorrente(long id, long idAgencia, double saldo, double tarifa, ArrayList<Long> operacoes, ArrayList<Long> cupons, ArrayList<Long> registro, ArrayList<Integer> clientes, Date criacao) {
+        super(idAgencia, saldo, criacao);
+        this.id = id;
+        this.tarifa = tarifa;
+        this.operacoes = operacoes;
+        this.cupons = cupons;
+        this.operacoes = operacoes;
+        this.clientes = clientes;
     }
 
     public double getTarifa() {
@@ -36,11 +46,11 @@ public class ContaCorrente extends Conta{
     }
 
 
-    public ArrayList<Operacao> getOperacoes() {
+    public ArrayList<Long> getOperacoes() {
         return this.operacoes;
     }
 
-    public void setOperacoes(ArrayList<Operacao> operacoes) {
+    public void setOperacoes(ArrayList<Long> operacoes) {
         this.operacoes = operacoes;
     }
 
@@ -65,7 +75,7 @@ public class ContaCorrente extends Conta{
             if(valor>5000){
                 geraCupom();
             }
-            operacoes.add(operacao);
+            operacoes.add(operacao.getId());
             operacao.salvar();
     
             Registro registro = new Registro(this.saldo, this.id);
@@ -81,7 +91,7 @@ public class ContaCorrente extends Conta{
 
         try {
             Cupom cupom = new Cupom(f.parse("25/05/2023"));
-            cupons.add(cupom);
+            cupons.add(cupom.getNumero());
             System.out.println("Cupom gerado com sucesso. Numero: " + cupom.getNumero()+"\n");
      
         } catch (ParseException e) {
@@ -89,7 +99,7 @@ public class ContaCorrente extends Conta{
         }
     }
 
-    public ArrayList<Cupom> getCupons() {
+    public ArrayList<Long> getCupons() {
         return this.cupons;
     }
 
@@ -121,7 +131,43 @@ public class ContaCorrente extends Conta{
             }
             for(String l : linhas){
                 String texto[] = l.split(",");
-                ContaCorrente contaCorrente = new ContaCorrente(Long.parseLong(texto[0]), Double.parseDouble(texto[1]),Double.parseDouble(texto[2]));
+
+                
+                ArrayList<Long> operacoes = new ArrayList<>();
+                ArrayList<Long> cupons = new ArrayList<>();
+                ArrayList<Long> registros = new ArrayList<>();
+                ArrayList<Integer> clientes = new ArrayList<>();
+
+                String operacao[] = texto[4].replace("[", "").replace("]", "").split(", ");
+                for(String s : operacao){
+                    operacoes.add(Long.parseLong(s));
+                }
+
+                String cupom[] = texto[5].replace("[", "").replace("]", "").split(", ");
+                for(String s : cupom){
+                    cupons.add(Long.parseLong(s));
+                }
+
+                String registro[] = texto[9].replace("[", "").replace("]", "").split(", ");
+                for(String s : registro){
+                    registros.add(Long.parseLong(s));
+                }
+
+                String cliente[] = texto[6].replace("[", "").replace("]", "").split(", ");
+                for(String s : cliente){
+                    clientes.add(Integer.parseInt(s));
+                }
+                for(String s : operacao){
+                    operacoes.add(Long.parseLong(s));
+                }
+                for(String s : cupom){
+                    cupons.add(Long.parseLong(s));
+                }
+                for(String s : registro){
+                    registros.add(Long.parseLong(s));
+                }
+
+                ContaCorrente contaCorrente = new ContaCorrente(Long.parseLong(texto[0]), Long.parseLong(texto[7]),Long.parseLong(texto[3]), Double.parseDouble(texto[2]), operacoes, cupons, registros, clientes, formatter.parse(texto[8]));
                 list.add(contaCorrente);
             }
         return list;
@@ -135,9 +181,16 @@ public class ContaCorrente extends Conta{
     public void salvar() {
         try{
             String path = "repository\\contaC.txt";
-            String texto = getIdAgencia() + "," +
+            String texto = getId() + "," +
             getSaldo() + "," +
-            getTarifa();
+            getTarifa() + "," +
+            getSaldo() + "," +
+            getOperacoes() + "," +
+            getCupons() + "," +
+            getClientes() + "," +
+            getIdAgencia() + "," +
+            getCriacao() + "," +
+            getRegistros();
             Arquivo.Write(path, texto);
         }
 		catch (Exception e) {
