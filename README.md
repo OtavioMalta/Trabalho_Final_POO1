@@ -4,11 +4,10 @@
 
 - [x] Registro do saldo de cada conta
 - [x] Exceptions
-- [ ] UML (Atualizar)
+- [x] UML 
 - [x] Supervisor e Gerente
-- [ ] JavaFX
+- [x] JavaFX
 - [x] Dependentes
-- [ ] Persistência dos dados (Cupom e Dependente)
+- [x] Persistência dos dados 
 
-
-![image](https://user-images.githubusercontent.com/83037014/159815785-c9a832fa-9f04-48ce-971e-5486bea50de0.png)
+![PF_POO](https://user-images.githubusercontent.com/83037014/161652812-3cfaa47e-aba9-4558-8cda-856c3dbae583.png)
